@@ -6,6 +6,31 @@
     <meta name="description" content="Yossi Bokor Bleile">
     <title>Yossi Bokor Bleile</title>
     <link rel="stylesheet" href="styles.css">
+	<style>
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50vh;
+            background-color: #f4f4f4;
+        }
+        .column {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+        }
+        .column img {
+            max-width: 100%;
+            height: auto;
+			max-height: 400px;
+            border-radius: 5px;
+        }
+        .column p {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -26,9 +51,14 @@
     
     <main>
         <section id="home">
-            <h1><img src="img/YB.jpg" height="100">Yossi Bokor Bleile</h1>
-            <p>Geometry. Topology. Data Science.</p>
-			
+			<div class="container">
+        <div class="column">
+            <img src="img/YB.jpg" alt="Yossi Bokor Bleile smiling in a green t-shirt.">
+        </div>
+        <div class="column">
+            <h1>Yossi Bokor Bleile</h1>
+			<h2>Geometry. Topology. Data Science.</h2>
+        </div>
         </section>
         
         <section id="about">
