@@ -56,9 +56,15 @@
     </main>
     
     <footer>
-        <p>&copy; 2025 Yossi Bokor Bleile. All rights reserved. Photo by <a href="https://hlcapture.dk/">Glenn Herping</a>.</p>
+        <p>&copy; <span id="currentYear"></span> Yossi Bokor Bleile. All rights reserved. Photo by <a href="https://hlcapture.dk/">Glenn Herping</a>.</p>
     </footer>
-    
+        <script>
+        // Get the current year
+        const year = new Date().getFullYear();
+
+        // Find the span element by its ID and update its content
+        document.getElementById("currentYear").textContent = year;
+    </script>
 </body>
 </html>
 

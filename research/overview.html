@@ -26,15 +26,21 @@
 
 				<p>As part of this, I produce code packages to help researchers independently leverage these geometric and topological tools in their research. For more information about these packages, see <a href="software.html#software">Software</a>.</p>
 
-				<p>At Aalborg University, I am part of the project <i>Deciphering Nanoporosity of Amorphous Materials using Topological Data Analysis</i>.</p>
+				<p>At Aalborg University, I was part of the project <i>Deciphering Nanoporosity of Amorphous Materials using Topological Data Analysis</i>.</p>
 	</section>
     
     </main>
     
     <footer>
-        <p>&copy; 2024 Yossi Bokor Bleile. All rights reserved.</p>
+        <p>&copy; <span id="currentYear"></span>  Yossi Bokor Bleile. All rights reserved.</p>
     </footer>
-    
+        <script>
+        // Get the current year
+        const year = new Date().getFullYear();
+
+        // Find the span element by its ID and update its content
+        document.getElementById("currentYear").textContent = year;
+    </script>
 </body>
 </html>
 

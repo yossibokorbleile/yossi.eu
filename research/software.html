@@ -38,9 +38,15 @@
     </main>
     
     <footer>
-        <p>&copy; 2024 Yossi Bokor Bleile. All rights reserved.</p>
+        <p>&copy; <span id="currentYear"></span> Yossi Bokor Bleile. All rights reserved.</p>
     </footer>
-    
+        <script>
+        // Get the current year
+        const year = new Date().getFullYear();
+
+        // Find the span element by its ID and update its content
+        document.getElementById("currentYear").textContent = year;
+    </script>
 </body>
 </html>
 
