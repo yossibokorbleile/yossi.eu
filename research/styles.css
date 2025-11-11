@@ -10,6 +10,9 @@ body {
     line-height: 1.6;
     background-color: #f4f4f4;
     color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -17,7 +20,6 @@ header {
     color: #fff;
     padding: 1rem 0;
     text-align: center;
-    overflow: auto;
 }
 
 nav {
@@ -31,6 +33,7 @@ nav ul {
     display: flex;
     justify-content: center;
     gap: 1rem;
+    flex-wrap: wrap;
 }
 
 nav ul li {
@@ -42,15 +45,17 @@ nav ul li a {
     text-decoration: none;
     padding: 0.5rem 1rem;
     transition: background-color 0.3s;
+    display: block;
 }
 
 nav ul li a:hover {
     background-color: #555;
-    overflow: auto;
 }
 
 main {
     padding: 2rem;
+    flex: 1;
+    padding-bottom: 6rem; /* Space for footer */
 }
 
 section {
@@ -62,16 +67,27 @@ section {
 }
 
 h1 {
-    font-size: 36px; /* Larger font size for h1 */
+    font-size: 36px;
     margin-bottom: 20px;
 }
+
 h2 {
-    font-size: 28px; /* Smaller font size for h2 */
+    font-size: 28px;
     margin-bottom: 20px;
 }
 
 p {
     margin-bottom: 1rem;
+}
+
+/* Links styling */
+a {
+    color: #0066cc;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #004499;
 }
 
 form {
@@ -109,9 +125,7 @@ footer {
     color: #fff;
     text-align: center;
     padding: 1rem 0;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
+    margin-top: auto;
 }
 
 /* Make links in header and footer white */
@@ -124,26 +138,201 @@ header a:hover, footer a:hover {
     text-decoration: underline;
 }
 
-container {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 50vh;
-	background-color: #f4f4f4;
+/* Container and column for home page layout */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem 0;
 }
-column {
-	flex: 1;
-	padding: 20px;
-	text-align: center;
+
+.column {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
 }
-column img {
-	max-width: 100%;
-	height: auto;
-	max-height: 400px;
-	border-radius: 5px;
+
+.column img {
+    max-width: 100%;
+    height: auto;
+    max-height: 400px;
+    border-radius: 5px;
 }
-column p {
-	font-size: 24px;
-	font-weight: bold;
-	color: #333;
+
+.column p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Publications list styling */
+ul.publications-list,
+ul.preprints-list {
+    list-style: none;
+    padding: 0;
+}
+
+ul.publications-list li,
+ul.preprints-list li {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+ul.publications-list li:last-child,
+ul.preprints-list li:last-child {
+    border-bottom: none;
+}
+
+.authors {
+    color: #555;
+}
+
+.title {
+    font-weight: 600;
+    color: #0066cc;
+}
+
+.venue {
+    font-style: italic;
+}
+
+/* Talks list styling */
+.talks-note {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+ul.talks-list {
+    list-style: none;
+    padding: 0;
+}
+
+ul.talks-list li {
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+ul.talks-list li:last-child {
+    border-bottom: none;
+}
+
+.invited-indicator {
+    color: #0066cc;
+    font-weight: bold;
+    min-width: 15px;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.talk-date {
+    font-weight: 600;
+    color: #333;
+    min-width: 140px;
+    flex-shrink: 0;
+}
+
+.talk-title {
+    color: #555;
+    line-height: 1.4;
+}
+
+
+
+/* Software list styling */
+ul.software-list {
+    list-style: none;
+    padding: 0;
+}
+
+ul.software-list li {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    border-left: 4px solid #0066cc;
+}
+
+.software-title {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.software-description {
+    margin: 0.5rem 0;
+    color: #666;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    nav ul li a {
+        padding: 0.75rem 1rem;
+    }
+    
+    h1 {
+        font-size: 28px;
+    }
+    
+    h2 {
+        font-size: 22px;
+    }
+    
+    .column img {
+        max-height: 300px;
+    }
+    
+    main {
+        padding: 1rem;
+    }
+    
+    section {
+        padding: 1rem;
+    }
+    
+    ul.talks-list li {
+        flex-wrap: wrap;
+    }
+    
+    .invited-indicator {
+        min-width: 15px;
+    }
+    
+    .talk-date {
+        min-width: 110px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 24px;
+    }
+    
+    h2 {
+        font-size: 20px;
+    }
+    
+    nav ul li a {
+        font-size: 0.9em;
+    }
+    
+    .talk-date {
+        min-width: 100px;
+    }
 }

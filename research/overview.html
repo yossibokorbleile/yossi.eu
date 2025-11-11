@@ -3,45 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Yossi Bokor Bleile">
-    <title>Yossi Bokor Bleile</title>
+    <meta name="description" content="Research overview of Yossi Bokor Bleile - applying geometric and topological methods to data analysis">
+    <title>Research - Yossi Bokor Bleile</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📐</text></svg>">
 </head>
 <body>
     <header>
         <nav>
-			<ul>
-                <a href="../index.html">Home</a>
-				<a href="publications.html">Publications</a>
-				<a href="software.html">Software</a>
-				<a href="talks.html">Talks</a>
-			</ul>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="software.html">Software</a></li>
+                <li><a href="talks.html">Talks</a></li>
+            </ul>
         </nav>
     </header>
     
     <main>
         <section id="about">
-			<h2>About My Research</h2>
-				<p>My focus in research is applying tools from (algebraic) geometry and (algebraic) topology to data analysis. In particular, I work with reseearchers in biology, biophysics, chemistry and medicine to investigate and understand how the shape of data allows us to gain insights into complex biological/physical/chemical processes. Of particular interest is how the shape of objects relates to their physical properties.</p>
+            <h2>About My Research</h2>
+            <p>My focus in research is applying tools from (algebraic) geometry and (algebraic) topology to data analysis. In particular, I work with researchers in biology, biophysics, chemistry and medicine to investigate and understand how the shape of data allows us to gain insights into complex biological/physical/chemical processes. Of particular interest is how the shape of objects relates to their physical properties.</p>
 
-				<p>As part of this, I produce code packages to help researchers independently leverage these geometric and topological tools in their research. For more information about these packages, see <a href="software.html#software">Software</a>.</p>
+            <p>As part of this, I produce code packages to help researchers independently leverage these geometric and topological tools in their research. For more information about these packages, see <a href="software.html#software">Software</a>.</p>
 
-				<p>At Aalborg University, I was part of the project <i>Deciphering Nanoporosity of Amorphous Materials using Topological Data Analysis</i>.</p>
-	</section>
-    
+            <p>At Aalborg University, I was part of the project <i>Deciphering Nanoporosity of Amorphous Materials using Topological Data Analysis</i>.</p>
+        </section>
     </main>
     
     <footer>
-        <p>&copy; <span id="currentYear"></span>  Yossi Bokor Bleile. All rights reserved.</p>
+        <p>&copy; <span id="currentYear"></span> Yossi Bokor Bleile. All rights reserved.</p>
     </footer>
-        <script>
-        // Get the current year
-        const year = new Date().getFullYear();
-
-        // Find the span element by its ID and update its content
-        document.getElementById("currentYear").textContent = year;
+    
+    <script>
+        document.getElementById("currentYear").textContent = new Date().getFullYear();
     </script>
 </body>
 </html>
-
-
