@@ -11,7 +11,12 @@
 <body>
     <header>
         <nav>
-            <ul>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="publications.html">Publications</a></li>
                 <li><a href="software.html">Software</a></li>
@@ -29,6 +34,33 @@
 
             <p>At Aalborg University, I was part of the project <i>Deciphering Nanoporosity of Amorphous Materials using Topological Data Analysis</i>.</p>
         </section>
+        
+        <section id="research-examples">
+            <h2>Research Examples</h2>
+            <p>Visual examples from my work applying topological and geometric methods to diverse problems:</p>
+            
+            <div class="image-gallery">
+                <figure>
+                    <img src="../img/research/zif_materials.gif" alt="Persistence diagram showing birth-death relationship in zeolitic imidazolate framework thermal stability analysis">
+                    <figcaption>Medium-range order controls thermal stability of pores in zeolitic imidazolate frameworks</figcaption>
+                </figure>
+                
+                <figure>
+                    <img src="../img/research/embedded_graphs.jpg" alt="Series of 3D embedded graphs showing reconstruction from noisy point cloud samples">
+                    <figcaption>Reconstructing linearly embedded graphs from noisy samples using stratified space learning</figcaption>
+                </figure>
+                
+                <figure>
+                    <img src="../img/research/tda_workflow.gif" alt="Topological data analysis workflow diagram showing signal processing through persistence diagrams to machine learning classification">
+                    <figcaption>TDA workflow for wind turbine blade icing detection using vibration spectra analysis</figcaption>
+                </figure>
+                
+                <figure>
+                    <img src="../img/research/radial.png" alt="Radial filtration diagram showing topological features evolving over time with corresponding persistence diagram">
+                    <figcaption>Persistence diagrams as morphological signatures of cells using radial filtrations</figcaption>
+                </figure>
+            </div>
+        </section>
     </main>
     
     <footer>
@@ -37,6 +69,37 @@
     
     <script>
         document.getElementById("currentYear").textContent = new Date().getFullYear();
+        
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (mobileMenuToggle && navMenu) {
+            mobileMenuToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                mobileMenuToggle.classList.toggle('active');
+            });
+            
+            // Close menu when clicking a link
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    mobileMenuToggle.classList.remove('active');
+                });
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                const isClickInsideNav = navMenu.contains(event.target);
+                const isClickOnToggle = mobileMenuToggle.contains(event.target);
+                
+                if (!isClickInsideNav && !isClickOnToggle && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    mobileMenuToggle.classList.remove('active');
+                }
+            });
+        }
     </script>
 </body>
 </html>
