@@ -1,0 +1,15 @@
+{{ define "main" }}
+<section id="talks">
+    <h2>Talks</h2>
+    <p class="talks-note">* indicates invited talk</p>
+    <ul class="talks-list">
+    {{ range site.Data.talks }}
+        <li>
+            <span class="invited-indicator">{{ if .invited }}*{{ end }}</span>
+            <span class="talk-date">{{ .date }}</span>
+            <span class="talk-title">{{ .title }}</span>
+        </li>
+    {{ end }}
+    </ul>
+</section>
+{{ end }}

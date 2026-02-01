@@ -1,0 +1,27 @@
+{{ define "main" }}
+<section id="software">
+    <h2>Software</h2>
+    <ul class="software-list">
+    {{ range where site.RegularPages "Section" "software" }}
+        <li>
+            <div class="software-title"><a href="{{ .Params.projectUrl }}">{{ .Title }}</a></div>
+            <div class="software-description">{{ .Params.description }}</div>
+            <div><strong>Language:</strong> {{ .Params.language }} | <strong>DOI:</strong> <a href="https://doi.org/{{ .Params.doi }}">{{ .Params.doi }}</a></div>
+        </li>
+    {{ end }}
+    </ul>
+</section>
+
+<section id="bugs">
+    <h2>Bug Reports</h2>
+    <p>To report a bug in any of my software, please email me at <a href="mailto:{{ site.Params.email }}">{{ site.Params.email }}</a> with a subject line in the format: <strong>SOFTWARENAME: Bug report</strong></p>
+    <p>When reporting a bug, please include:</p>
+    <ul>
+        <li>Software name and version</li>
+        <li>Operating system and version</li>
+        <li>Steps to reproduce the issue</li>
+        <li>Expected vs. actual behavior</li>
+        <li>Any error messages or logs</li>
+    </ul>
+</section>
+{{ end }}

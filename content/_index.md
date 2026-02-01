@@ -1,0 +1,6 @@
+---
+title: "Yossi Bokor Bleile - Mathematician"
+description: "Mathematician specializing in geometric and topological data analysis at Institute of Science and Technology Austria"
+---
+
+I am a mathematician working in geometric and topological data analysis. Currently, I am at the [Institute of Science and Technology Austria](https://ist.ac.at), supported by the [FWF](https://www.fwf.ac.at/en) project [*Qualitative Unbiased Shape Analysis with Geometry & Topology*](https://www.fwf.ac.at/en/research-radar/10.55776/ESP9584724). Previously, I was a post doc at the [Department of Mathematical Sciences, Aalborg University](http://math.aau.dk), where I worked on the project [*Deciphering Nanoporosity of Amorphous Materials using Topological Data Analysis*](https://vbn.aau.dk/en/projects/deciphering-nanoporosity-of-amorphous-materials-using-topological). I completed a Joint PhD at the [Australian National University](https://anu.edu.au) and the [University of Sydney](https://sydney.edu.au), supervised by Dr Kate Turner, Professor Vanessa Robins, Professor Stephan Tillmann and Dr Jonathan Spreer. Before this, I did a Master of Mathematical Sciences at [ANU](https://anu.edu.au) and a Bachelor of Arts (Honours) at [University of Sydney](http://sydney.edu.au).

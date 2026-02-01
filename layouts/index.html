@@ -1,0 +1,37 @@
+{{ define "main" }}
+{{ partial "new-publications.html" . }}
+
+<section id="home">
+    <div class="container">
+        <div class="column">
+            <img src="/img/YBB.jpg" alt="Yossi Bokor Bleile smiling and pointing at a blackboard with a cubical complex on it. Photo by Glenn Herping.">
+        </div>
+        <div class="column">
+            <h1>Yossi Bokor Bleile</h1>
+            <h2>Geometry. Topology. Data Science.</h2>
+        </div>
+    </div>
+</section>
+
+<section id="about">
+    <h2>About Me</h2>
+    {{ .Content }}
+</section>
+
+<section id="contact">
+    <h2>Contact Me</h2>
+    <p>Email: <a href="mailto:{{ site.Params.email }}">{{ site.Params.email }}</a></p>
+    <p>ORCID: <a href="https://orcid.org/{{ site.Params.orcid }}">{{ site.Params.orcid }}</a></p>
+    <p>GitHub: <a href="https://github.com/{{ site.Params.github }}">{{ site.Params.github }}</a></p>
+</section>
+
+<section id="links">
+    <h2>Interesting Links</h2>
+    <ul>
+        <li><a href="https://ista.ac.at/en/home/">Institute of Science and Technology Austria</a></li>
+        <li><a href="https://donut.topology.rocks"><b>D</b>atabase of <b>O</b>riginal & <b>N</b>on-Theoretical <b>U</b>ses of <b>T</b>opology</a></li>
+        <li><a href="https://www.aatrn.net/">Applied Algebraic Topology Research Network</a></li>
+        <li><a href="https://appliedtopology.org/">Applied Topology</a></li>
+    </ul>
+</section>
+{{ end }}

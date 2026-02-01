@@ -1,0 +1,39 @@
+baseURL = "https://yossi.eu/"
+languageCode = "en"
+title = "Yossi Bokor Bleile"
+
+[params]
+  description = "Mathematician specializing in geometric and topological data analysis"
+  author = "Yossi Bokor Bleile"
+  email = "yossi@yossi.eu"
+  orcid = "0000-0002-4861-9174"
+  github = "yossibokorbleile"
+  affiliation = "Institute of Science and Technology Austria"
+  affiliationURL = "https://ist.ac.at"
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "Research"
+    url = "/research/"
+    weight = 2
+  [[menu.main]]
+    name = "Publications"
+    url = "/publications/"
+    weight = 3
+  [[menu.main]]
+    name = "Software"
+    url = "/software/"
+    weight = 4
+  [[menu.main]]
+    name = "Talks"
+    url = "/talks/"
+    weight = 5
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

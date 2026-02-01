@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
+    <meta name="keywords" content="mathematics, topology, geometry, data science, topological data analysis, TDA">
+    <meta name="author" content="{{ site.Params.author }}">
+    <title>{{ if .IsHome }}{{ site.Title }} - Mathematician{{ else }}{{ .Title }} - {{ site.Title }}{{ end }}</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📐</text></svg>">
+
+    {{ if .IsHome }}
+    <!-- Structured Data for Academic Profile -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "{{ site.Params.author }}",
+      "jobTitle": "Mathematician",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "{{ site.Params.affiliation }}",
+        "url": "{{ site.Params.affiliationURL }}"
+      },
+      "url": "{{ site.BaseURL }}",
+      "sameAs": [
+        "https://orcid.org/{{ site.Params.orcid }}",
+        "https://github.com/{{ site.Params.github }}"
+      ],
+      "knowsAbout": ["Topology", "Geometry", "Data Science", "Topological Data Analysis"]
+    }
+    </script>
+    {{ end }}
+</head>
+<body>
+    {{ partial "header.html" . }}
+
+    <main>
+        {{ block "main" . }}{{ end }}
+    </main>
+
+    {{ partial "footer.html" . }}
+
+    <script>
+        document.getElementById("currentYear").textContent = new Date().getFullYear();
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (mobileMenuToggle && navMenu) {
+            mobileMenuToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                mobileMenuToggle.classList.toggle('active');
+            });
+
+            // Close menu when clicking a link
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    mobileMenuToggle.classList.remove('active');
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                const isClickInsideNav = navMenu.contains(event.target);
+                const isClickOnToggle = mobileMenuToggle.contains(event.target);
+
+                if (!isClickInsideNav && !isClickOnToggle && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    mobileMenuToggle.classList.remove('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

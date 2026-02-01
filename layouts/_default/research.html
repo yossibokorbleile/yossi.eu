@@ -1,0 +1,84 @@
+{{ define "main" }}
+<section id="about">
+    <h2>About My Research</h2>
+    {{ .Content }}
+</section>
+
+<section id="research-examples">
+    <h2>Research Examples</h2>
+    <p>Visual examples from my work applying topological and geometric methods to diverse problems. Click any image to explore.</p>
+
+    <div class="image-gallery interactive">
+        <figure class="gallery-item" data-title="ZIF Materials" data-description="Medium-range order structure controls thermal stability of pores in zeolitic imidazolate frameworks. This work combines topological data analysis with materials science to understand how atomic arrangements affect material properties.">
+            <img src="/img/research/zif_materials.gif" alt="Persistence diagram showing birth-death relationship in zeolitic imidazolate framework thermal stability analysis">
+            <figcaption>Medium-range order controls thermal stability of pores in zeolitic imidazolate frameworks</figcaption>
+            <div class="gallery-overlay"><span>Click to explore</span></div>
+        </figure>
+
+        <figure class="gallery-item" data-title="Embedded Graph Reconstruction" data-description="Reconstructing the underlying structure of linearly embedded graphs from noisy point cloud samples. This stratified space learning approach recovers both the combinatorial graph structure and its geometric embedding.">
+            <img src="/img/research/embedded_graphs.jpg" alt="Series of 3D embedded graphs showing reconstruction from noisy point cloud samples">
+            <figcaption>Reconstructing linearly embedded graphs from noisy samples using stratified space learning</figcaption>
+            <div class="gallery-overlay"><span>Click to explore</span></div>
+        </figure>
+
+        <figure class="gallery-item" data-title="Wind Turbine Blade Icing Detection" data-description="Topological data analysis workflow for detecting ice formation on wind turbine blades. Vibration spectra are transformed into persistence diagrams, which serve as features for machine learning classification of icing conditions.">
+            <img src="/img/research/tda_workflow.gif" alt="Topological data analysis workflow diagram showing signal processing through persistence diagrams to machine learning classification">
+            <figcaption>TDA workflow for wind turbine blade icing detection using vibration spectra analysis</figcaption>
+            <div class="gallery-overlay"><span>Click to explore</span></div>
+        </figure>
+
+        <figure class="gallery-item" data-title="Cell Morphology Analysis" data-description="Using radial filtrations to create persistence diagrams that serve as morphological signatures of cells. This method enables quantitative comparison of cell shapes within a population, with applications in biology and medicine.">
+            <img src="/img/research/radial.png" alt="Radial filtration diagram showing topological features evolving over time with corresponding persistence diagram">
+            <figcaption>Persistence diagrams as morphological signatures of cells using radial filtrations</figcaption>
+            <div class="gallery-overlay"><span>Click to explore</span></div>
+        </figure>
+    </div>
+</section>
+
+<!-- Lightbox Modal -->
+<div id="lightbox" class="lightbox">
+    <button class="lightbox-close" aria-label="Close">&times;</button>
+    <div class="lightbox-content">
+        <img id="lightbox-img" src="" alt="">
+        <div class="lightbox-info">
+            <h3 id="lightbox-title"></h3>
+            <p id="lightbox-description"></p>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxDesc = document.getElementById('lightbox-description');
+    const closeBtn = document.querySelector('.lightbox-close');
+
+    document.querySelectorAll('.gallery-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const img = item.querySelector('img');
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            lightboxTitle.textContent = item.dataset.title;
+            lightboxDesc.textContent = item.dataset.description;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLightbox();
+    });
+})();
+</script>
+{{ end }}

@@ -1,0 +1,30 @@
+{{- $thirtyDaysAgo := now.AddDate 0 0 -30 -}}
+{{- $newPubs := slice -}}
+
+{{- range where site.RegularPages "Section" "publications" -}}
+  {{- $page := . -}}
+  {{- with .Params.newSince -}}
+    {{- $newDate := time . -}}
+    {{- if gt $newDate $thirtyDaysAgo -}}
+      {{- $newPubs = $newPubs | append $page -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- range where site.RegularPages "Section" "preprints" -}}
+  {{- $page := . -}}
+  {{- with .Params.newSince -}}
+    {{- $newDate := time . -}}
+    {{- if gt $newDate $thirtyDaysAgo -}}
+      {{- $newPubs = $newPubs | append $page -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if $newPubs }}
+<div class="new-publications-banner">
+    {{- range $newPubs }}
+        <p>New publication <a href="https://doi.org/{{ .Params.doi }}">{{ .Title }}</a> {{ .Params.doi }}</p>
+    {{- end }}
+</div>
+{{- end }}

@@ -1,0 +1,37 @@
+{{ define "main" }}
+<section id="publications">
+    <h2>Publications</h2>
+    <ul class="publications-list">
+    {{ range where site.RegularPages "Section" "publications" }}
+        <li>
+            <span class="authors">{{ delimit .Params.authors ", " }}</span>,
+            <a href="https://doi.org/{{ .Params.doi }}" class="title">'{{ .Title }}'</a>,
+            <span class="venue">{{ if .Params.isThesis }}{{ .Params.venue }}{{ else }}<i>{{ .Params.venue }}</i>{{ end }}</span>
+            {{- with .Params.volume }} {{ . }}{{ end }}
+            ({{ .Params.year }}{{ with .Params.note }}, {{ . }}{{ end }}),
+            DOI: <a href="https://doi.org/{{ .Params.doi }}">{{ .Params.doi }}</a>
+            {{ with .Params.image }}
+            <figure class="publication-image">
+                <img src="/img/research/{{ . }}" alt="{{ $.Params.imageCaption }}">
+                <figcaption>{{ $.Params.imageCaption }}</figcaption>
+            </figure>
+            {{ end }}
+        </li>
+    {{ end }}
+    </ul>
+</section>
+
+<section id="preprints">
+    <h2>Preprints</h2>
+    <ul class="preprints-list">
+    {{ range where site.RegularPages "Section" "preprints" }}
+        <li>
+            <span class="authors">{{ delimit .Params.authors ", " }}</span>,
+            <a href="https://doi.org/{{ .Params.doi }}" class="title">'{{ .Title }}'</a>,
+            <span class="venue">{{ .Params.venue }}</span> ({{ .Params.year }}),
+            DOI: <a href="https://doi.org/{{ .Params.doi }}">{{ .Params.doi }}</a>
+        </li>
+    {{ end }}
+    </ul>
+</section>
+{{ end }}

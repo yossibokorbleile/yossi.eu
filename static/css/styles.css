@@ -505,16 +505,207 @@ figure.single-image figcaption {
     h1 {
         font-size: 24px;
     }
-    
+
     h2 {
         font-size: 20px;
     }
-    
+
     nav ul li a {
         font-size: 0.9em;
     }
-    
+
     .talk-date {
         min-width: 100px;
+    }
+}
+
+/* Interactive Gallery */
+.image-gallery.interactive .gallery-item {
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.image-gallery.interactive .gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 102, 204, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+    pointer-events: none;
+}
+
+.image-gallery.interactive .gallery-overlay span {
+    color: white;
+    font-weight: 600;
+    font-size: 1.1em;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.image-gallery.interactive .gallery-item:hover .gallery-overlay {
+    background: rgba(0, 102, 204, 0.7);
+}
+
+.image-gallery.interactive .gallery-item:hover .gallery-overlay span {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.image-gallery.interactive .gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.image-gallery.interactive .gallery-item img {
+    transition: transform 0.3s ease;
+}
+
+/* Lightbox Modal */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2.5rem;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+    z-index: 2001;
+}
+
+.lightbox-close:hover {
+    opacity: 1;
+}
+
+.lightbox-content {
+    max-width: 900px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.lightbox-content img {
+    max-width: 100%;
+    max-height: 60vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.lightbox-info {
+    text-align: center;
+    color: white;
+    max-width: 700px;
+}
+
+.lightbox-info h3 {
+    font-size: 1.5em;
+    margin-bottom: 0.75rem;
+    color: #fff;
+}
+
+.lightbox-info p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+/* New Publication Banner */
+.new-publications-banner {
+    background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+}
+
+.new-publications-banner h3 {
+    font-size: 1.1em;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.new-publications-banner h3::before {
+    content: "★";
+    color: #ffd700;
+}
+
+.new-publications-banner ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.new-publications-banner li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.new-publications-banner li:last-child {
+    border-bottom: none;
+}
+
+.new-publications-banner a {
+    color: white;
+    text-decoration: underline;
+}
+
+.new-publications-banner a:hover {
+    color: #ffd700;
+}
+
+.new-publications-banner .pub-date {
+    font-size: 0.85em;
+    opacity: 0.8;
+    margin-left: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .lightbox {
+        padding: 1rem;
+    }
+
+    .lightbox-content img {
+        max-height: 50vh;
+    }
+
+    .lightbox-info h3 {
+        font-size: 1.2em;
+    }
+
+    .lightbox-info p {
+        font-size: 0.9em;
     }
 }
