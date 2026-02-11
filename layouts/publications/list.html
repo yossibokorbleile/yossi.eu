@@ -2,7 +2,7 @@
 <section id="publications">
     <h2>Publications</h2>
     <ul class="publications-list">
-    {{ range where site.RegularPages "Section" "publications" }}
+    {{ range (where site.RegularPages "Section" "publications").ByDate.Reverse }}
         <li>
             <span class="authors">{{ delimit .Params.authors ", " }}</span>,
             <a href="https://doi.org/{{ .Params.doi }}" class="title">'{{ .Title }}'</a>,
@@ -24,7 +24,7 @@
 <section id="preprints">
     <h2>Preprints</h2>
     <ul class="preprints-list">
-    {{ range where site.RegularPages "Section" "preprints" }}
+    {{ range (where site.RegularPages "Section" "preprints").ByDate.Reverse }}
         <li>
             <span class="authors">{{ delimit .Params.authors ", " }}</span>,
             <a href="https://doi.org/{{ .Params.doi }}" class="title">'{{ .Title }}'</a>,

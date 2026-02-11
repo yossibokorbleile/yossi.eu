@@ -8,7 +8,7 @@ authors:
   - "S\u00F8ren Strandskov S\u00F8rensen"
 venue: "arXiv"
 year: 2025
+date: 2025-01-01
 doi: "10.48550/arXiv.2505.17858"
-weight: 10
 type: preprint
 ---

@@ -9,9 +9,9 @@ authors:
   - Morten Smedskjaer
 venue: "The Journal of Physical Chemistry Letters"
 year: 2023
+date: 2023-08-14
 doi: "10.1021/acs.jpclett.3c00962"
 image: "zif_materials.gif"
 imageCaption: "Medium-range order retention in ZIF structures"
-weight: 40
 type: publication
 ---
