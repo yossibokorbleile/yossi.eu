@@ -1,4 +1,4 @@
-# Build Hugo site and deploy to Infomaniak
+# Build Hugo site and push to deploy repo
 name: Deploy Hugo site
 
 on:
@@ -39,12 +39,23 @@ jobs:
             --minify \
             --baseURL "https://yossi.eu/"
 
-      - name: Deploy to Infomaniak
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+      - name: Checkout deploy repo
+        uses: actions/checkout@v4
         with:
-          server: 57-107586.ssh.hosting-ik.com
-          username: JLn6voVHQsM_github
-          password: ${{ secrets.PASSWORD }}
-          local_path: ./public/*
-          remote_path: /srv/customer/sites/yossi.eu/
-          sftp_only: true
+          repository: yossibokorbleile/yossi-eu-deploy
+          token: ${{ secrets.DEPLOY_TOKEN }}
+          path: deploy
+
+      - name: Update site files
+        run: |
+          rm -rf deploy/sites/yossi.eu/*
+          cp -r ./public/* deploy/sites/yossi.eu/
+
+      - name: Push to deploy repo
+        run: |
+          cd deploy
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "Update yossi.eu"
+          git push
