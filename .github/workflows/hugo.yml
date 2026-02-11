@@ -41,20 +41,11 @@ jobs:
 
       - name: Deploy to Infomaniak
         env:
-          LFTP_PASSWORD: ${{ secrets.PASSWORD }}
+          SSHPASS: ${{ secrets.PASSWORD }}
         run: |
-          sudo apt-get install -y lftp
-          cat > ~/.lftprc << 'LFTPRC'
-          set sftp:auto-confirm yes
-          set ssl:verify-certificate no
-          LFTPRC
-          cat > ~/.netrc << NETRC
-          machine 57-107586.ssh.hosting-ik.com
-          login JLn6voVHQsM_github
-          password ${LFTP_PASSWORD}
-          NETRC
-          chmod 600 ~/.netrc
-          lftp sftp://JLn6voVHQsM_github@57-107586.ssh.hosting-ik.com -e "
-            mirror --reverse --delete --verbose ./public/ /srv/customer/sites/yossi.eu/
-            bye
-          "
+          sudo apt-get install -y sshpass
+          sshpass -e sftp -o StrictHostKeyChecking=no -o Port=22 JLn6voVHQsM_github@57-107586.ssh.hosting-ik.com << 'SFTP'
+          cd /srv/customer/sites/yossi.eu
+          pwd
+          bye
+          SFTP
