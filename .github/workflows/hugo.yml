@@ -41,11 +41,11 @@ jobs:
 
       - name: Deploy to Infomaniak
         env:
-          DEPLOY_KEY: ${{ secrets.GithubActionsDeploy }}
+          FTP_PASSWORD: ${{ secrets.PASSWORD }}
         run: |
-          mkdir -p ~/.ssh
-          echo "$DEPLOY_KEY" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
-          ssh-keyscan -H "57-107586.ssh.hosting-ik.com" >> ~/.ssh/known_hosts
-          rsync -avz --delete -e "ssh -i ~/.ssh/deploy_key" \
-            ./public/ "JLn6voVHQsM_tmp_1770838504@57-107586.ssh.hosting-ik.com:/srv/customer/sites/yossi.eu/"
+          sudo apt-get install -y lftp
+          lftp -u "JLn6voVHQsM_github,$FTP_PASSWORD" sftp://57-107586.ssh.hosting-ik.com -e "
+            set sftp:auto-confirm yes
+            mirror --reverse --delete --verbose ./public/ /srv/customer/sites/yossi.eu/
+            bye
+          "
