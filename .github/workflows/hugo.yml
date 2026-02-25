@@ -35,7 +35,7 @@ jobs:
         with:
           repository: yossibokorbleile/teaching-resources
           token: ${{ secrets.TEACHINGRESOURCESDEPLOY }}
-          path: content/teaching
+          path: teaching-resources
 
       - name: Build with Hugo
         env:
@@ -45,6 +45,12 @@ jobs:
           hugo \
             --minify \
             --baseURL "https://yossi.eu/"
+
+      - name: Copy teaching resources into build
+        run: |
+          mkdir -p public/teaching
+          cp -r teaching-resources/demos public/teaching/
+          cp -r teaching-resources/ISTA public/teaching/
 
       - name: Checkout deploy repo
         uses: actions/checkout@v4
