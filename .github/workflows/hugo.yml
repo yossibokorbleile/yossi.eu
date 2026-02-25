@@ -66,8 +66,13 @@ jobs:
 
       - name: Write .env to deploy repo
         run: |
-          echo 'TEACHINGPASSDEMOS=${{ secrets.TEACHINGPASSDEMOS }}' > deploy/.env
-          echo 'TEACHINGPASSISTA=${{ secrets.TEACHINGPASSISTA }}' >> deploy/.env
+          echo "TEACHINGPASSDEMOS=$PASS_DEMOS" > deploy/.env
+          echo "TEACHINGPASSISTA=$PASS_ISTA" >> deploy/.env
+          echo "TEACHINGPASSDEMOS length: ${#PASS_DEMOS}"
+          echo "TEACHINGPASSISTA length: ${#PASS_ISTA}"
+        env:
+          PASS_DEMOS: ${{ secrets.TEACHINGPASSDEMOS }}
+          PASS_ISTA: ${{ secrets.TEACHINGPASSISTA }}
 
       - name: Push to deploy repo
         run: |
