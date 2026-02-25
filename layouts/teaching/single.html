@@ -1,0 +1,9 @@
+{{ define "main" }}
+<section id="teaching-single">
+    <h2>{{ .Title }}</h2>
+    <p class="teaching-meta">
+        {{ .Params.semester }}{{ with .Params.institution }} &mdash; {{ . }}{{ end }}
+    </p>
+    {{ .Content }}
+</section>
+{{ end }}

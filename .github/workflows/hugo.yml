@@ -30,6 +30,13 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Checkout teaching resources
+        uses: actions/checkout@v4
+        with:
+          repository: yossibokorbleile/teaching-resources
+          token: ${{ secrets.TEACHINGRESOURCESDEPLOY }}
+          path: content/teaching
+
       - name: Build with Hugo
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
@@ -50,6 +57,11 @@ jobs:
         run: |
           rm -rf deploy/sites/yossi.eu/*
           cp -r ./public/* deploy/sites/yossi.eu/
+
+      - name: Write .env to deploy repo
+        run: |
+          echo 'TEACHINGPASSDEMOS=${{ secrets.TEACHINGPASSDEMOS }}' > deploy/.env
+          echo 'TEACHINGPASSISTA=${{ secrets.TEACHINGPASSISTA }}' >> deploy/.env
 
       - name: Push to deploy repo
         run: |

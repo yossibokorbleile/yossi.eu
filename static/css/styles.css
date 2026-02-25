@@ -639,6 +639,44 @@ figure.single-image figcaption {
     color: #ccc;
 }
 
+/* Teaching list styling */
+ul.teaching-list {
+    list-style: none;
+    padding: 0;
+}
+
+ul.teaching-list li {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    border-left: 4px solid #0066cc;
+}
+
+.teaching-course {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 0.3rem;
+}
+
+.teaching-meta {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 0.3rem;
+}
+
+.teaching-description {
+    color: #555;
+}
+
+#teaching-single .teaching-meta {
+    font-size: 1em;
+    color: #666;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
 /* New Publication Banner */
 .new-publications-banner {
     background: linear-gradient(135deg, #0066cc 0%, #004499 100%);

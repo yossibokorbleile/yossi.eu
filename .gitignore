@@ -5,6 +5,9 @@
 # Hugo lock file
 .hugo_build.lock
 
+# Teaching content (pulled from private repo at build time)
+/content/teaching/
+
 # OS files
 .DS_Store
 Thumbs.db
