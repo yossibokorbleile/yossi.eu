@@ -50,7 +50,7 @@ jobs:
         run: |
           mkdir -p public/teaching
           cp -r teaching-resources/demos public/teaching/
-          cp -r teaching-resources/ISTA public/teaching/ista
+          cp -r teaching-resources/ista public/teaching/ista
 
       - name: Checkout deploy repo
         uses: actions/checkout@v4
