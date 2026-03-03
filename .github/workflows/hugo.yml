@@ -49,6 +49,7 @@ jobs:
       - name: Copy teaching resources into build
         run: |
           mkdir -p public/teaching
+          cp teaching-resources/index.html public/teaching/
           cp -r teaching-resources/demos public/teaching/
           cp -r teaching-resources/ista public/teaching/ista
 
