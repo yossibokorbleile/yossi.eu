@@ -298,9 +298,12 @@ ul.talks-list li:last-child {
 .talk-title {
     color: #555;
     line-height: 1.4;
+    font-style: italic;
 }
 
-
+.talk-location {
+    color: #777;
+}
 
 /* Software list styling */
 ul.software-list {
