@@ -8,6 +8,7 @@
             <span class="invited-indicator">{{ if .invited }}*{{ end }}</span>
             <span class="talk-date">{{ .date }}</span>
             <span class="talk-title">{{ .title }}</span>
+            {{ with .location }}<span class="talk-location">, {{ . }}</span>{{ end }}
         </li>
     {{ end }}
     </ul>
