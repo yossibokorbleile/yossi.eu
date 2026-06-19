@@ -301,6 +301,10 @@ ul.talks-list li:last-child {
     font-style: italic;
 }
 
+.talk-text {
+    white-space: nowrap;
+}
+
 .talk-location {
     color: #777;
 }
