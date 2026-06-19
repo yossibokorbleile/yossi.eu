@@ -4,5 +4,5 @@ projectUrl: "https://github.com/yossibokorbleile/DiscretePersistentHomologyTrans
 description: "Julia package computing discrete approximations of the persistent homology transform"
 language: "Julia"
 doi: "10.5281/zenodo.7545693"
-weight: 30
+weight: 40
 ---

@@ -223,6 +223,12 @@ ul.preprints-list li:last-child {
     color: #555;
 }
 
+.number {
+    font-weight: 600;
+    color: #333;
+    margin-right: 0.5rem;
+}
+
 .title {
     font-weight: 600;
     color: #0066cc;
