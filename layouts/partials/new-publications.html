@@ -24,7 +24,7 @@
 {{- if $newPubs }}
 <div class="new-publications-banner">
     {{- range $newPubs }}
-        <p>New publication <a href="https://doi.org/{{ .Params.doi }}">{{ .Title }}</a> {{ .Params.doi }}</p>
+        <p>New {{ if eq .Section "preprints" }}preprint{{ else }}publication{{ end }} <a href="https://doi.org/{{ .Params.doi }}">{{ .Title }}</a> {{ .Params.doi }}</p>
     {{- end }}
 </div>
 {{- end }}
