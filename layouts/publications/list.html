@@ -1,35 +1,49 @@
 {{ define "main" }}
-<section id="publications">
-    <h2>Publications</h2>
-    <ul class="publications-list">
-    {{ range $index, $page := (where site.RegularPages "Section" "publications").ByDate.Reverse }}
+{{ $allPages := union (where site.RegularPages "Section" "publications") (where site.RegularPages "Section" "preprints") }}
+{{ $allPagesChronological := $allPages.ByDate }}
+{{ $allPagesReverse := $allPages.ByDate.Reverse }}
+
+{{ $numberMap := newScratch }}
+{{ $index := 0 }}
+{{ range $page := $allPagesChronological }}
+    {{ $index = add $index 1 }}
+    {{ $numberMap.Set $page.Params.doi $index }}
+{{ end }}
+
+{{ $preprints := where $allPagesReverse "Section" "preprints" }}
+{{ $publications := where $allPagesReverse "Section" "publications" }}
+
+<section id="preprints">
+    <h2>Preprints</h2>
+    <ul class="preprints-list">
+    {{ range $page := $preprints }}
         <li>
-            <span class="number">{{ add $index 1 }}.</span> <span class="authors">{{ delimit .Params.authors ", " }}</span>,
-            <a href="https://doi.org/{{ .Params.doi }}" class="title">'{{ .Title }}'</a>,
-            <span class="venue">{{ if .Params.isThesis }}{{ .Params.venue }}{{ else }}<i>{{ .Params.venue }}</i>{{ end }}</span>
-            {{- with .Params.volume }} {{ . }}{{ end }}
-            ({{ .Params.year }}{{ with .Params.note }}, {{ . }}{{ end }}),
-            DOI: <a href="https://doi.org/{{ .Params.doi }}">{{ .Params.doi }}</a>
-            {{ with .Params.image }}
-            <figure class="publication-image">
-                <img src="/img/research/{{ . }}" alt="{{ $.Params.imageCaption }}">
-                <figcaption>{{ $.Params.imageCaption }}</figcaption>
-            </figure>
-            {{ end }}
+            <span class="number">{{ ($numberMap.Get $page.Params.doi) }}.</span> <span class="authors">{{ delimit $page.Params.authors ", " }}</span>,
+            <a href="{{ with $page.Params.link }}{{ . }}{{ else }}https://doi.org/{{ $page.Params.doi }}{{ end }}" class="title">'{{ $page.Title }}'</a>,
+            <span class="venue">{{ $page.Params.venue }}</span> ({{ $page.Params.year }}),
+            DOI: <a href="https://doi.org/{{ $page.Params.doi }}">{{ $page.Params.doi }}</a>
         </li>
     {{ end }}
     </ul>
 </section>
 
-<section id="preprints">
-    <h2>Preprints</h2>
-    <ul class="preprints-list">
-    {{ range $index, $page := (where site.RegularPages "Section" "preprints").ByDate.Reverse }}
+<section id="publications">
+    <h2>Publications</h2>
+    <ul class="publications-list">
+    {{ range $page := $publications }}
         <li>
-            <span class="number">{{ add $index 1 }}.</span> <span class="authors">{{ delimit .Params.authors ", " }}</span>,
-            <a href="https://doi.org/{{ .Params.doi }}" class="title">'{{ .Title }}'</a>,
-            <span class="venue">{{ .Params.venue }}</span> ({{ .Params.year }}),
-            DOI: <a href="https://doi.org/{{ .Params.doi }}">{{ .Params.doi }}</a>
+            <span class="number">{{ ($numberMap.Get $page.Params.doi) }}.</span> <span class="authors">{{ delimit $page.Params.authors ", " }}</span>,
+            <a href="{{ with $page.Params.link }}{{ . }}{{ else }}https://doi.org/{{ $page.Params.doi }}{{ end }}" class="title">'{{ $page.Title }}'</a>,
+            <span class="venue">{{ if $page.Params.isThesis }}{{ $page.Params.venue }}{{ else }}<i>{{ $page.Params.venue }}</i>{{ end }}</span>
+            {{- with $page.Params.volume }} {{ . }}{{ end }}
+            ({{ $page.Params.year }}{{ with $page.Params.note }}, {{ . }}{{ end }}),
+            DOI: <a href="https://doi.org/{{ $page.Params.doi }}">{{ $page.Params.doi }}</a>
+            {{ with $page.Params.image }}
+            <figure class="publication-image">
+                <img src="/img/research/{{ . }}" alt="{{ $page.Params.imageCaption }}">
+                <figcaption>{{ $page.Params.imageCaption }}</figcaption>
+            </figure>
+            {{ end }}
         </li>
     {{ end }}
     </ul>
