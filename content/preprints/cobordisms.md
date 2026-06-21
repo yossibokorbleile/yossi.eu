@@ -11,4 +11,7 @@ year: 2025
 date: 2025-01-01
 doi: "10.48550/arXiv.2505.17858"
 type: preprint
+image: "tunnels.png"
+imageCaption: "Exmples of structures"
+
 ---

@@ -22,6 +22,12 @@
             <a href="{{ with $page.Params.link }}{{ . }}{{ else }}https://doi.org/{{ $page.Params.doi }}{{ end }}" class="title">'{{ $page.Title }}'</a>,
             <span class="venue">{{ $page.Params.venue }}</span> ({{ $page.Params.year }}),
             DOI: <a href="https://doi.org/{{ $page.Params.doi }}">{{ $page.Params.doi }}</a>
+            {{ with $page.Params.image }}
+            <figure class="publication-image">
+                <img src="/img/research/{{ . }}" alt="{{ $page.Params.imageCaption }}">
+                <figcaption>{{ $page.Params.imageCaption }}</figcaption>
+            </figure>
+            {{ end }}
         </li>
     {{ end }}
     </ul>
