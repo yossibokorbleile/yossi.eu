@@ -1,15 +1,22 @@
 {{ define "main" }}
 {{ $publications := (where site.RegularPages "Section" "publications").ByDate.Reverse }}
 {{ $preprints := (where site.RegularPages "Section" "preprints").ByDate.Reverse }}
-
 {{ $pubCount := len $publications }}
+{{ $preprintCount := len $preprints }}
+{{ $totalCount := add $pubCount $preprintCount }}
+
+{{/* Use scratch for a decrementing counter */}}
+{{ $scratch := newScratch }}
+{{ $scratch.Set "counter" $totalCount }}
 
 <section id="preprints">
     <h2>Preprints</h2>
     <ul class="preprints-list">
-    {{ range $index, $page := $preprints }}
+        {{ range $index, $page := $preprints }}
         <li>
-            <span class="number">{{ add $pubCount $index 1 }}.</span> <span class="authors">{{ delimit $page.Params.authors ", " }}</span>,
+            <span class="number">{{ $scratch.Get "counter" }}.</span>
+            {{ $scratch.Add "counter" -1 }}
+            <span class="authors">{{ delimit $page.Params.authors ", " }}</span>,
             <a href="{{ with $page.Params.link }}{{ . }}{{ else }}https://doi.org/{{ $page.Params.doi }}{{ end }}" class="title">'{{ $page.Title }}'</a>,
             <span class="venue">{{ $page.Params.venue }}</span> ({{ $page.Params.year }}),
             DOI: <a href="https://doi.org/{{ $page.Params.doi }}">{{ $page.Params.doi }}</a>
@@ -20,20 +27,21 @@
             </figure>
             {{ end }}
         </li>
-    {{ end }}
+        {{ end }}
     </ul>
 </section>
 
 <section id="publications">
     <h2>Publications</h2>
     <ul class="publications-list">
-    {{ range $index, $page := $publications }}
+        {{ range $index, $page := $publications }}
         <li>
-            <span class="number">{{ add $index 1 }}.</span> <span class="authors">{{ delimit $page.Params.authors ", " }}</span>,
+            <span class="number">{{ $scratch.Get "counter" }}.</span>
+            {{ $scratch.Add "counter" -1 }}
+            <span class="authors">{{ delimit $page.Params.authors ", " }}</span>,
             <a href="{{ with $page.Params.link }}{{ . }}{{ else }}https://doi.org/{{ $page.Params.doi }}{{ end }}" class="title">'{{ $page.Title }}'</a>,
             <span class="venue">{{ if $page.Params.isThesis }}{{ $page.Params.venue }}{{ else }}<i>{{ $page.Params.venue }}</i>{{ end }}</span>
-            {{- with $page.Params.volume }} {{ . }}{{ end }}
-            ({{ $page.Params.year }}{{ with $page.Params.note }}, {{ . }}{{ end }}),
+            {{- with $page.Params.volume }} {{ . }}{{ end }} ({{ $page.Params.year }}{{ with $page.Params.note }}, {{ . }}{{ end }}),
             DOI: <a href="https://doi.org/{{ $page.Params.doi }}">{{ $page.Params.doi }}</a>
             {{ with $page.Params.image }}
             <figure class="publication-image">
@@ -42,7 +50,7 @@
             </figure>
             {{ end }}
         </li>
-    {{ end }}
+        {{ end }}
     </ul>
 </section>
 {{ end }}
