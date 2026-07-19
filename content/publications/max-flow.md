@@ -12,6 +12,6 @@ authors:
   - Morten Mattrup Smedskjaer
 venue: "Nature Communications (Accepted, no preprints available online)"
 year: 2026
-date: 2026
+date: 2026-07-01
 type: publication
 ---
