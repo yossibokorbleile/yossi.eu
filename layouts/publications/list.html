@@ -16,10 +16,10 @@
         <li>
             <span class="number">{{ $scratch.Get "counter" }}.</span>
             {{ $scratch.Add "counter" -1 }}
-            <span class="authors">{{ delimit $page.Params.authors ", " }}</span>,
-            <a href="{{ with $page.Params.link }}{{ . }}{{ else }}https://doi.org/{{ $page.Params.doi }}{{ end }}" class="title">'{{ $page.Title }}'</a>,
+            <span class="authors">{{ with $page.Params.authors }}{{ delimit . ", " }}{{ end }}</span>,
+            <a href="{{ with $page.Params.link }}{{ . }}{{ else }}{{ with $page.Params.doi }}https://doi.org/{{ . }}{{ end }}{{ end }}" class="title">'{{ $page.Title }}'</a>,
             <span class="venue">{{ $page.Params.venue }}</span> ({{ $page.Params.year }}),
-            DOI: <a href="https://doi.org/{{ $page.Params.doi }}">{{ $page.Params.doi }}</a>
+            {{ with $page.Params.doi }}DOI: <a href="https://doi.org/{{ . }}">{{ . }}</a>{{ end }}
             {{ with $page.Params.image }}
             <figure class="publication-image">
                 <img src="/img/research/{{ . }}" alt="{{ $page.Params.imageCaption }}">
@@ -38,11 +38,11 @@
         <li>
             <span class="number">{{ $scratch.Get "counter" }}.</span>
             {{ $scratch.Add "counter" -1 }}
-            <span class="authors">{{ delimit $page.Params.authors ", " }}</span>,
-            <a href="{{ with $page.Params.link }}{{ . }}{{ else }}https://doi.org/{{ $page.Params.doi }}{{ end }}" class="title">'{{ $page.Title }}'</a>,
+            <span class="authors">{{ with $page.Params.authors }}{{ delimit . ", " }}{{ end }}</span>,
+            <a href="{{ with $page.Params.link }}{{ . }}{{ else }}{{ with $page.Params.doi }}https://doi.org/{{ . }}{{ end }}{{ end }}" class="title">'{{ $page.Title }}'</a>,
             <span class="venue">{{ if $page.Params.isThesis }}{{ $page.Params.venue }}{{ else }}<i>{{ $page.Params.venue }}</i>{{ end }}</span>
             {{- with $page.Params.volume }} {{ . }}{{ end }} ({{ $page.Params.year }}{{ with $page.Params.note }}, {{ . }}{{ end }}),
-            DOI: <a href="https://doi.org/{{ $page.Params.doi }}">{{ $page.Params.doi }}</a>
+            {{ with $page.Params.doi }}DOI: <a href="https://doi.org/{{ . }}">{{ . }}</a>{{ end }}
             {{ with $page.Params.image }}
             <figure class="publication-image">
                 <img src="/img/research/{{ . }}" alt="{{ $page.Params.imageCaption }}">

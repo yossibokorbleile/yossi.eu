@@ -1,4 +1,3 @@
-A. R. Lindbjerg, R. Christensen, S. S. Sørensen, T. Du, Y. Bokor Bleile, A. M. Svane, C. A. N. Biscio, L. Fajstrup, M. M. Smedskjaer, `' \emph{Nature Communications} (ACCEPTED, no preprints available online).
 ---
 title: "Predicting ionic conductivity of glassy solid-state electrolytes using max-flow methodology"
 authors:
