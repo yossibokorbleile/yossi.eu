@@ -26,12 +26,12 @@ jobs:
           && sudo dpkg -i ${{ runner.temp }}/hugo.deb
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           submodules: recursive
 
       - name: Checkout teaching resources
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: yossibokorbleile/teaching-resources
           token: ${{ secrets.TEACHINGRESOURCESDEPLOY }}
@@ -54,7 +54,7 @@ jobs:
           cp -r teaching-resources/ista public/teaching/ista
 
       - name: Checkout deploy repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: yossibokorbleile/yossi-eu-deploy
           token: ${{ secrets.DEPLOYTOKEN }}
