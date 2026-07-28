@@ -1,9 +1,10 @@
 ---
 title: "Predicting ionic conductivity of glassy solid-state electrolytes using max-flow methodology"
 authors:
-  - Anders Lindbjerg
+  - Matteo Pegorary 
   - Rasmus Christensen
   - Søren Strandskov Sørensen
+  - Anders Lindbjerg
   - Tao Du
   - Yossi Bokor Bleile
   - Anne Marie Svane
