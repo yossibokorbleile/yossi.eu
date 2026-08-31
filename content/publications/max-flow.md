@@ -1,7 +1,7 @@
 ---
 title: "Predicting ionic conductivity of glassy solid-state electrolytes using max-flow methodology"
 authors:
-  - Matteo Pegorary 
+  - Matteo Pegoraro 
   - Rasmus Christensen
   - Søren Strandskov Sørensen
   - Anders Lindbjerg
@@ -13,6 +13,7 @@ authors:
   - Morten Mattrup Smedskjaer
 venue: "Nature Communications (Accepted, no preprints available online)"
 year: 2026
-date: 2026-07-01
+date: 2026-08-31
+doi: "https://doi.org/10.1038/s41467-026-77363-w"
 type: publication
 ---
