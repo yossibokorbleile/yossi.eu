@@ -13,6 +13,8 @@ year: 2026
 doi: "10.1371/journal.pcbi.1013890"
 arxiv: "2310.20644"
 image: "radial.png"
-imageCaption: "Persistence diagrams as morphological signatures of cells"
+imageCaption: "Persistence diagrams as morphological signatures of cells using radial filtrations"
+galleryTitle: "Cell Morphology Analysis"
+galleryDescription: "Using radial filtrations to create persistence diagrams that serve as morphological signatures of cells. This method enables quantitative comparison of cell shapes within a population, with applications in biology and medicine."
 type: publication
 ---

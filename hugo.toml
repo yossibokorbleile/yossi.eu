@@ -1,5 +1,5 @@
 baseURL = "https://yossi.eu/"
-languageCode = "en"
+locale = "en"
 title = "Yossi Bokor Bleile"
 
 [params]

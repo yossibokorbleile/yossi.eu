@@ -341,40 +341,97 @@ ul.software-list li {
     color: #666;
 }
 
-/* Image gallery styling */
+/* Image gallery styling - True Masonry Layout */
 .image-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+    column-count: 3;
+    column-gap: 1.5rem;
     margin-top: 1.5rem;
 }
 
-.image-gallery figure {
-    margin: 0;
+.image-gallery figure.gallery-item {
+    break-inside: avoid;
+    margin: 0 0 1.5rem 0;
+    padding: 0;
     background-color: #fff;
     border-radius: 5px;
-    overflow: hidden;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+    display: block;
+    page-break-inside: avoid;
 }
 
-.image-gallery figure:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+.image-gallery figure.gallery-item:hover {
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
-.image-gallery img {
+.image-gallery figure.gallery-item a {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.image-gallery .gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 102, 204, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+    pointer-events: none;
+}
+
+.image-gallery .gallery-overlay span {
+    color: white;
+    font-weight: 600;
+    font-size: 1.1em;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.image-gallery figure.gallery-item a:hover .gallery-overlay {
+    background: rgba(0, 102, 204, 0.7);
+}
+
+.image-gallery figure.gallery-item a:hover .gallery-overlay span {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.image-gallery figure.gallery-item a:hover img {
+    transform: scale(1.05);
+}
+
+.image-gallery figure.gallery-item img {
     width: 100%;
     height: auto;
     display: block;
+    transition: transform 0.3s ease;
 }
 
-.image-gallery figcaption {
+.image-gallery figure.gallery-item figcaption {
     padding: 1rem;
     font-size: 0.9em;
     color: #666;
     text-align: center;
     background-color: #f9f9f9;
+}
+
+@media (max-width: 1024px) {
+    .image-gallery {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .image-gallery {
+        column-count: 1;
+    }
 }
 
 /* Single image styling */
@@ -502,11 +559,6 @@ figure.single-image figcaption {
     
     .talk-date {
         min-width: 110px;
-    }
-    
-    .image-gallery {
-        grid-template-columns: 1fr;
-        gap: 1rem;
     }
     
     figure.single-image {

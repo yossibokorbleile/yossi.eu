@@ -12,6 +12,8 @@ date: 2025-01-01
 doi: "10.48550/arXiv.2505.17858"
 type: preprint
 image: "tunnels.png"
-imageCaption: "Exmples of structures"
+imageCaption: "Examples of cobordism structures"
+galleryTitle: "Cobordism Identification via Kernel Persistence"
+galleryDescription: "Using kernel persistence to identify and classify cobordisms in topological data analysis, with applications in understanding structural relationships."
 
 ---
